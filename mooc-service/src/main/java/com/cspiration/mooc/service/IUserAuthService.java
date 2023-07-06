@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface IUserAuthService {
 
-    Boolean insert(UserAuth userAuth);
+    UserAuth insert(UserAuth userAuth);
+
+    void insert2(UserAuth userAuth);
 
     Boolean getByUsername(String username);
     Boolean getByUserEmail(String email);

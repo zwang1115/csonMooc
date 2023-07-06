@@ -1,9 +1,15 @@
 package com.cspiration.mooc.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.util.Date;
 
 public class BaseEntity {
 
+    @Id
+    @Field(type = FieldType.Long)
     private Long id;
     private Date createTime;
 

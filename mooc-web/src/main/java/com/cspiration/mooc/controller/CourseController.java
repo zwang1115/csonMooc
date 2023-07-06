@@ -75,7 +75,7 @@ public class CourseController {
     public Boolean courseCommentPublish(Comment comment) {
         UserAuth userAuth = UserContext.getUser();
         comment.setUserId(userAuth.getId());
-        return iCommentService.insert(comment);
+        return iCommentService.insert(comment) != null;
     }
 
 

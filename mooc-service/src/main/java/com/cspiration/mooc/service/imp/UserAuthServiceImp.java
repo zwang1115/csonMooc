@@ -1,6 +1,7 @@
 package com.cspiration.mooc.service.imp;
 
 import com.cspiration.mooc.dao.UserAuthDao;
+import com.cspiration.mooc.dao.UserAuthMongoDBDao;
 import com.cspiration.mooc.entity.UserAuth;
 import com.cspiration.mooc.service.IUserAuthService;
 import com.cspiration.mooc.utils.HashUtils;
@@ -17,14 +18,22 @@ public class UserAuthServiceImp implements IUserAuthService {
 
     @Autowired
     private UserAuthDao userAuthDao;
+
+    @Autowired
+    private UserAuthMongoDBDao userAuthMongoDBDao;
     @Override
-    public Boolean insert(UserAuth userAuth) {
+    public UserAuth insert(UserAuth userAuth) {
         userAuth.setPasswd(HashUtils.encryPassword(userAuth.getPasswd()));
         userAuth.setCreateTime(new Date());
         if (userAuthDao.insert(userAuth) <= 0) {
-            return false;
+            return null;
         }
-        return true;
+        return getUserAuthByQuery(userAuth).get(0);
+    }
+
+    @Override
+    public void insert2(UserAuth userAuth) {
+        userAuthMongoDBDao.insert(userAuth);
     }
 
     @Override

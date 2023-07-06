@@ -1,9 +1,16 @@
 package com.cspiration.mooc.entity;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+@Document(indexName = "users")
 public class UserAuth extends BaseEntity{
 
+    @Field(type = FieldType.Text)
     private String username;
 
+    @Field(type = FieldType.Text)
     private String email;
 
     private String passwd;
@@ -50,5 +57,16 @@ public class UserAuth extends BaseEntity{
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "UserAuth{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", passwd='" + passwd + '\'' +
+                ", confirmPasswd='" + confirmPasswd + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

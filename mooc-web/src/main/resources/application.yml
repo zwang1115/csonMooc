@@ -19,6 +19,18 @@ spring:
       time_format: HH:mm:ss
       default_encoding: UTF-8
       auto_import: common/common.ftl as common
+  data:
+    mongodb:
+      uri: mongodb://localhost/cspiration
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  application:
+    name: cson-mooc-web
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
 
 mybatis:
   configuration:
@@ -29,5 +41,13 @@ mybatis:
       default-statement-timeout: 600
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.cspiration.mooc.entity
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+logging:
+  file:
+    name: cspiration.log
 
 

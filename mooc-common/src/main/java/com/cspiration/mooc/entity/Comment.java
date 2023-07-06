@@ -1,9 +1,15 @@
 package com.cspiration.mooc.entity;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+@Document(indexName = "comments")
 public class Comment extends BaseEntity{
 
     private Long courseId;
 
+    @Field(type = FieldType.Text)
     private String content;
 
     private Long userId;

@@ -13,12 +13,13 @@ public class CommentServiceImp implements ICommentService {
 
     @Autowired
     private CommentDao commentDao;
+
     @Override
-    public Boolean insert(Comment comment) {
+    public Comment insert(Comment comment) {
         if (commentDao.insert(comment) <= 0) {
-            return false;
+            return null;
         }
-        return true;
+        return query(comment).get(0);
     }
 
     @Override

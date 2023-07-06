@@ -38,7 +38,7 @@ public class UserAuthController {
             resultMsg.setErrorMsg("邮箱已注册");
         }
 
-        if (resultMsg.isSuccess() && iUserAuthService.insert(userAuth)) {
+        if (resultMsg.isSuccess() && iUserAuthService.insert(userAuth) != null) {
             modelMap.put("email", userAuth.getEmail());
             return "redirect:/registerSubmit?email=" + userAuth.getEmail();
         } else {

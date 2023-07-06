@@ -45,6 +45,7 @@ public class UserProfileController {
         List<UserCourse> userCourseList = iUserCourseService.query(userCourse);
         modelMap.put("userCourse", userCourseList);
         return "/accounts/myCourse";
+
     }
 
 }
